@@ -1,0 +1,19 @@
+main{
+    max-width: 1000px;
+    margin: auto;
+}
+label{
+    display: block;
+    margin: 1rem 0;
+}
+input{
+    display: block;
+    margin-top: .25rem;
+    width: 100%;
+    max-width: 250px;
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
+}
+button{
+    padding: 0.25rem 0.5rem;
+}
