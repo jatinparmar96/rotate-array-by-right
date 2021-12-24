@@ -22,21 +22,17 @@ function shiftFn() {
 function performantArrayRotation(arr, shift) {
     let newArr,firstElement;
     const offset = shift % arr.length;
-
-    console.time("newArrayRotation")
-    // Need to use the spread operator since splice method mutates the original array
-    newArr = [...arr].splice(-offset);
-    firstElement = [...arr].splice(0, (arr.length - (offset)));
-    console.timeEnd("newArrayRotation");
     // If the offset is a multiple of array length just return the original array, since
     // both arrays will be same
     if (offset === 0) {
-        return newArr
+        return arr
     }
-    else {
-        firstElement.splice(0,0,newArr)
-        return firstElement;
-    }
+    // Need to use the spread operator since splice method mutates the original array
+    newArr = [...arr].splice(-offset);
+    firstElement = [...arr].splice(0, (arr.length - (offset)));
+    firstElement.splice(0,0,newArr)
+    return firstElement;
+
 }
 
 /**
@@ -49,13 +45,11 @@ function performantArrayRotation(arr, shift) {
  */
 function arrayRotation(arr, shift) {
     let newArr = arr;
-    console.time('old');
     // Primitive approach rotate array right one by one until shift ends.
     while (shift && shift>0) {
         newArr = rightRotateArrayByOne(newArr);
         shift--;
     }
-    console.timeEnd('old');
     return newArr;
 }
 
